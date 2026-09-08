@@ -1,0 +1,15 @@
+@import "tailwindcss";
+
+
+.hero-image {
+    object-position: center center;
+}
+
+.hero-button {
+    transition: all 0.3s ease;
+}
+
+.hero-button:hover {
+    background-color: white;
+    color: #666;
+}
