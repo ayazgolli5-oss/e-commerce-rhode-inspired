@@ -114,6 +114,31 @@ app.get("/api/me", requireAuth, async (req, res) => {
   }
 });
 
+
+
+// ===== PRODUCTS: get all products =====
+app.get("/api/products", async (req, res) => {
+  try {
+    const [rows] = await db.query("SELECT * FROM products ORDER BY id");
+    res.json(rows);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Server error" });
+  }
+});
+
+// ===== PRODUCTS: get one product by its id =====
+app.get("/api/products/:id", async (req, res) => {
+  try {
+    const [rows] = await db.query("SELECT * FROM products WHERE id = ?", [req.params.id]);
+    if (!rows[0]) return res.status(404).json({ error: "Product not found" });
+    res.json(rows[0]);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Server error" });
+  }
+});
+
 // ===== 9. Start the server =====
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
