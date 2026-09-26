@@ -117,9 +117,16 @@ app.get("/api/me", requireAuth, async (req, res) => {
 
 
 // ===== PRODUCTS: get all products =====
+// ===== PRODUCTS: get all products (or only featured ones) =====
 app.get("/api/products", async (req, res) => {
   try {
-    const [rows] = await db.query("SELECT * FROM products ORDER BY id");
+    let sql = "SELECT * FROM products";
+    if (req.query.featured === "1") {
+      sql += " WHERE featured = TRUE ORDER BY review_count DESC";
+    } else {
+      sql += " ORDER BY id";
+    }
+    const [rows] = await db.query(sql);
     res.json(rows);
   } catch (err) {
     console.error(err);

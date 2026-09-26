@@ -114,15 +114,25 @@
                   
         </section>
 
+    <main class="mx-8 mt-10">
+    <div id="shop-filters" class="flex flex-wrap justify-center gap-4"></div>
 
-
-<section class="mx-8 mt-8 rounded-2xl px-12 py-10">
-    <div id="product-grid" class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        <!-- cards will be injected here by JavaScript -->
+    <div class="mt-10 flex items-center justify-between">
+        <span id="shop-count" class="text-sm text-stone-500"></span>
+        <select id="shop-sort" class="rounded-full border border-stone-300 bg-white px-4 py-2 text-sm text-stone-600 focus:outline-none">
+            <option value="default">Featured</option>
+            <option value="price-asc">Price: low to high</option>
+            <option value="price-desc">Price: high to low</option>
+            <option value="name">Name: A to Z</option>
+        </select>
     </div>
-</section>
 
-    <script type="module" src="/src/products.js"></script>
+    <section id="shop-products" class="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3"></section>
+</main>
+
+
+
+
 </body>
 
 <footer class="mx-8 mb-8 mt-20 rounded-2xl bg-[#f4f4f2] text-stone-600">
@@ -209,6 +219,7 @@
 </footer>
 
     <script type="module" src="/src/search.js"></script>
+    <script type="module" src="/src/shop.js"></script>
 </body>
 </html>
 
