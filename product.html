@@ -92,43 +92,20 @@
     </header>
     </div>
 
-    <main>
-        <section class="relative mx-8 mt-5 min-h-[600px] overflow-hidden rounded-2xl">
 
 
+        <main class="mx-8 mt-8">
+    <section id="product-detail">
+        <p class="text-center text-stone-500">Loading...</p>
+    </section>
 
-        <div class="relative mx-8 mt-5 overflow-hidden rounded-2xl">
-          <img 
-          src="images/rhhode.jpg" 
-          alt="hailey campaign" 
-         class="block h-auto w-full"
-          />
-  
-           <!-- Repositioned and scaled text overlay -->
-           <div class="absolute bottom-12 left-10 max-w-xs text-stone-700 text-3xl sm:text-4xl font-semibold leading-tight drop-shadow-md">
-          One of EVERYTHING really good.
-          </div>
-        </div>
-
-            
-                  
-        </section>
-
-    <main class="mx-8 mt-10">
-    <div id="shop-filters" class="flex flex-wrap justify-center gap-4"></div>
-
-    <div class="mt-10 flex items-center justify-between">
-        <span id="shop-count" class="text-sm text-stone-500"></span>
-        <select id="shop-sort" class="rounded-full border border-stone-300 bg-white px-4 py-2 text-sm text-stone-600 focus:outline-none">
-            <option value="default">Featured</option>
-            <option value="price-asc">Price: low to high</option>
-            <option value="price-desc">Price: high to low</option>
-            <option value="name">Name: A to Z</option>
-        </select>
-    </div>
-
-    <section id="shop-products" class="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3"></section>
+    <section class="mt-20">
+        <h2 class="mb-6 text-3xl font-extrabold lowercase text-stone-600">vous aimerez aussi</h2>
+        <div id="related-products" class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3"></div>
+    </section>
 </main>
+
+
 
 
 
@@ -219,7 +196,8 @@
 </footer>
 
     <script type="module" src="/src/search.js"></script>
-    <script type="module" src="/src/shop.js"></script>
+    <script type="module" src="/src/product.js"></script>
+    
 </body>
 </html>
 
