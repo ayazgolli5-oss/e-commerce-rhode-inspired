@@ -30,13 +30,14 @@ app.get("/api/health", async (req, res) => {
   }
 });
 
+
 // ===== 5. REGISTER: create a new account =====
 app.post("/api/register", async (req, res) => {
-  const { email, password } = req.body;
+  const { firstName, lastName, email, password } = req.body;
 
   // Check the data
-  if (!email || !password || password.length < 6) {
-    return res.status(400).json({ error: "Email and a password of 6+ characters are required" });
+  if (!firstName || !lastName || !email || !password || password.length < 6) {
+    return res.status(400).json({ error: "All fields are required, and the password needs 6+ characters" });
   }
 
   try {
@@ -44,8 +45,8 @@ app.post("/api/register", async (req, res) => {
     const hash = await bcrypt.hash(password, 10);
 
     const [result] = await db.query(
-      "INSERT INTO users (email, password_hash) VALUES (?, ?)",
-      [email.toLowerCase(), hash]
+      "INSERT INTO users (first_name, last_name, email, password_hash) VALUES (?, ?, ?, ?)",
+      [firstName.trim(), lastName.trim(), email.toLowerCase(), hash]
     );
 
     res.status(201).json({ message: "Account created", userId: result.insertId });
