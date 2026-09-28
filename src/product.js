@@ -75,17 +75,15 @@ function setupButtons(p) {
     });
 }
 
-// "Vous aimerez aussi": other products from the same category
-async function loadRelated(p) {
-    const response = await fetch(`${API_URL}/products`);
-    const all = await response.json();
 
-    const list = all
-        .filter((other) => other.category === p.category && other.id !== p.id)
-        .slice(0, 3);
+
+// "Vous aimerez aussi": products recommended by the AI (KNN)
+async function loadRelated(p) {
+    const response = await fetch(`${API_URL}/products/${p.id}/recommendations`);
+    const list = response.ok ? await response.json() : [];
 
     if (list.length === 0) {
-        related.parentElement.classList.add("hidden"); // hide the section if empty
+        related.parentElement.classList.add("hidden"); // no recommendations -> hide the section
         return;
     }
     related.innerHTML = list.map(productCard).join("");

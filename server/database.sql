@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.3
 -- https://www.phpmyadmin.net/
 --
--- Hôte : 127.0.0.1
--- Généré le : lun. 28 sep. 2026 à 17:33
--- Version du serveur : 10.4.32-MariaDB
--- Version de PHP : 8.2.12
+-- Hôte : db
+-- Généré le : lun. 28 sep. 2026 à 17:18
+-- Version du serveur : 10.11.19-MariaDB-ubu2204
+-- Version de PHP : 8.3.35
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -112,6 +112,52 @@ INSERT INTO `products` (`id`, `name`, `description`, `price`, `image`, `category
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `product_recommendations`
+--
+
+CREATE TABLE `product_recommendations` (
+  `product_id` int(11) NOT NULL,
+  `recommended_id` int(11) NOT NULL,
+  `score` decimal(6,4) NOT NULL,
+  `rank_pos` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `product_recommendations`
+--
+
+INSERT INTO `product_recommendations` (`product_id`, `recommended_id`, `score`, `rank_pos`) VALUES
+(1, 3, 0.4139, 2),
+(1, 8, 0.4140, 1),
+(1, 14, 0.4139, 3),
+(3, 4, 0.4339, 3),
+(3, 5, 0.4478, 1),
+(3, 11, 0.4372, 2),
+(4, 3, 0.4339, 1),
+(4, 5, 0.4281, 3),
+(4, 11, 0.4330, 2),
+(5, 3, 0.4478, 1),
+(5, 4, 0.4281, 3),
+(5, 6, 0.4392, 2),
+(6, 4, 0.4133, 3),
+(6, 5, 0.4392, 1),
+(6, 8, 0.4335, 2),
+(8, 5, 0.4210, 2),
+(8, 6, 0.4335, 1),
+(8, 9, 0.4141, 3),
+(9, 1, 0.4137, 3),
+(9, 8, 0.4141, 2),
+(9, 14, 0.4287, 1),
+(11, 3, 0.4372, 1),
+(11, 4, 0.4330, 2),
+(11, 5, 0.4261, 3),
+(14, 3, 0.4142, 2),
+(14, 9, 0.4287, 1),
+(14, 11, 0.4142, 3);
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `users`
 --
 
@@ -157,6 +203,13 @@ ALTER TABLE `order_items`
 --
 ALTER TABLE `products`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `product_recommendations`
+--
+ALTER TABLE `product_recommendations`
+  ADD PRIMARY KEY (`product_id`,`recommended_id`),
+  ADD KEY `recommended_id` (`recommended_id`);
 
 --
 -- Index pour la table `users`
@@ -209,6 +262,13 @@ ALTER TABLE `orders`
 ALTER TABLE `order_items`
   ADD CONSTRAINT `order_items_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `order_items_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`);
+
+--
+-- Contraintes pour la table `product_recommendations`
+--
+ALTER TABLE `product_recommendations`
+  ADD CONSTRAINT `product_recommendations_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `product_recommendations_ibfk_2` FOREIGN KEY (`recommended_id`) REFERENCES `products` (`id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

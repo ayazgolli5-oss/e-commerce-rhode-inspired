@@ -147,6 +147,25 @@ app.get("/api/products/:id", async (req, res) => {
   }
 });
 
+
+// ===== AI RECOMMENDATIONS: products similar to this one (computed by KNN in Python) =====
+app.get("/api/products/:id/recommendations", async (req, res) => {
+  try {
+    const [rows] = await db.query(
+      `SELECT p.*, r.score
+       FROM product_recommendations r
+       JOIN products p ON p.id = r.recommended_id
+       WHERE r.product_id = ?
+       ORDER BY r.rank_pos`,
+      [req.params.id]
+    );
+    res.json(rows);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Server error" });
+  }
+});
+
 // ===== 9. Start the server =====
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));

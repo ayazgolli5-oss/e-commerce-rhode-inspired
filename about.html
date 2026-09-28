@@ -93,21 +93,17 @@
     </div>
 
     <main>
-        <section class="relative mx-8 mt-5 h-[calc(100vh-150px)] min-h-[600px] overflow-hidden rounded-2xl">
+       <section class="relative mx-8 mt-5 h-[calc(100vh-10rem)] overflow-hidden rounded-2xl bg-[#efeaee]">
+    <!-- Whole photo, never cropped, stuck to the left -->
+    <img src="images/Haileyyy.jpg" alt="rhode campaign"
+         class="absolute inset-0 h-full w-full object-contain object-left">
 
-
-             <img src="images/hailey.webp" alt="hailey compaign" class=" absolute inset-0 object-cover object-center">
-                  <div class="absolute bottom-8 left-8 flex flex-col items-start gap-4 text-left text-white ">
-                      <h1 class="font-sans text-4xl font-semibold">
-                         A new PHILOSOPHY on SKINCARE.
-                      </h1>
-                          <a href="shop.html" class=" inline-block rounded-full border-2 border-white px-9 py-1 text-base font-semibold transition hover:bg-white hover:text-gray-600">
-                               SHOP NOW
-                          </a>
-
-                  </div>
-        
-        </section>
+    <!-- Text at the bottom right -->
+    <div class="absolute bottom-10 right-10 flex flex-col items-end gap-6 text-right text-stone-600">
+        <h1 class="text-5xl font-light leading-tight">Welcome to the<br>WORLD of rhode.</h1>
+        <a href="shop.html" class="rounded-full border-2 border-stone-600 px-10 py-2 text-lg hover:bg-stone-600 hover:text-white">COME ON IN</a>
+    </div>
+</section>
 
     <section class="mx-8 mt-6 flex min-h-[70vh] flex-col items-center justify-center rounded-2xl bg-[#f3f2f0]  text-center px-6 py-24">
     <h2 class="text-3xl font-bold uppercase tracking-widest text-stone-500 mb-6">
