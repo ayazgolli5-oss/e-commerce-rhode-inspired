@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : db
--- Généré le : lun. 28 sep. 2026 à 17:18
+-- Généré le : lun. 28 sep. 2026 à 22:07
 -- Version du serveur : 10.11.19-MariaDB-ubu2204
 -- Version de PHP : 8.3.35
 
@@ -46,7 +46,7 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`id`, `user_id`, `full_name`, `address`, `city`, `phone`, `subtotal`, `shipping`, `total`, `status`, `created_at`) VALUES
-(1, 1, 'aya zgolly', '4 rue azmour', 'Kelibia', '20266947', 72.00, 0.00, 72.00, 'pending', '2026-09-28 11:20:10');
+(1, 1, 'aya zgolly', '4 rue azmour', 'Kelibia', '20266947', 72.00, 0.00, 72.00, 'delivered', '2026-09-28 11:20:10');
 
 -- --------------------------------------------------------
 
@@ -176,7 +176,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `first_name`, `last_name`, `email`, `password_hash`, `role`, `created_at`) VALUES
-(1, NULL, NULL, 'ayazgolly@gmail.com', '$2b$10$KGieQK4uzI.RIUkmyDH.DeFkAwxZLJDbC9qrSfk6ZZvfQqdvNmn6y', 'customer', '2026-09-25 18:55:18'),
+(1, 'Aya', 'Admin', 'ayazgolly@gmail.com', '$2b$10$KGieQK4uzI.RIUkmyDH.DeFkAwxZLJDbC9qrSfk6ZZvfQqdvNmn6y', 'admin', '2026-09-25 18:55:18'),
 (3, 'aya', 'zgolli', 'ayazgolli5@gmail.com', '$2b$10$jzGFThgmkBZUBrX21yRN7uL8cFcrlBCUMYGTopgku.lQGvh9UFMJe', 'customer', '2026-09-26 17:45:29');
 
 --

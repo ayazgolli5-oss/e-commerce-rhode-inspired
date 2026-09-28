@@ -21,7 +21,7 @@
          </p>
         </div>
 
-       <section class="mx-8 mt-4 flex h-[calc(100vh-6rem)] flex-col overflow-hidden rounded-2xl bg-[#f3f2f0]">
+       <section class="mx-8 mt-4 flex flex-col overflow-hidden rounded-2xl bg-[#f3f2f0]">
 
     <!-- Navbar: its own beige band -->
     <nav class="flex items-center justify-between px-10 py-6 text-stone-600">
@@ -39,13 +39,13 @@
 
     <!-- Photo: takes all the remaining space -->
     <div class="relative flex-1">
-        <img src="images/haileyy.png" alt="rhode campaign"
-             class="absolute inset-0 h-full w-full  object-cover object-[center_35%]">
+        <img src="images/hai.webp" alt="rhode campaign"
+             class="block h-auto w-full">
 
-        <div class="absolute bottom-10 left-10 text-stone-600">
+        <div class="absolute bottom-10 left-10 z-10 text-stone-600">
             <p class="mb-3 text-base font-semibold uppercase tracking-wide">award-winning glow</p>
             <h1 class="mb-5 max-w-sm text-3xl font-light leading-tight">Allure's Best of Beauty Winner.</h1>
-            <a href="shop.html" class="inline-block rounded-full border-2 border-stone-600 px-10 py-1.5 text-lg hover:bg-stone-600 hover:text-white">HIGHLIGHT MILK</a>
+            <a href="product.html?id=5" class="inline-block rounded-full border-2 border-stone-600 px-10 py-1.5 text-lg hover:bg-stone-600 hover:text-white">HIGHLIGHT MILK</a>
         </div>
     </div>
 </section>
@@ -97,14 +97,35 @@
     </header>
 
 
-    <!-- Main Content -->
     <main>
-
-
-        <!-- Hero Section -->
   
 
 <section id="featured-products" class="mx-8 mt-10 grid grid-cols-1 gap-5 md:grid-cols-3"></section>
+
+
+        <section class="relative mx-8 mt-8 flex h-[80vh] items-center justify-center overflow-hidden rounded-2xl bg-[#cfb2b9]">
+    <!-- Background image: put your file name here -->
+    <img src="images/pin.png" alt="pink"
+         class="absolute inset-0 h-full w-full object-cover">
+
+    <!-- Text on top -->
+    <div class="relative z-10 flex max-w-2xl flex-col items-center gap-6 px-6 text-center text-white">
+        <h2 class="text-3xl font-bold">one of everything really good</h2>
+
+        <p class="text-lg leading-relaxed">
+            At rhode, our philosophy is to make one of everything really good.
+            To us, that means a collection of intentional, high-performance essentials
+            you reach for everyday. The ones you love, rely on, and always come back
+            to for ultimate barrier nourishment, tint, and glow.
+        </p>
+
+        <a href="shop.html"
+           class="mt-2 w-fit rounded-full border border-white px-10 py-2 text-lg uppercase transition hover:bg-white hover:text-stone-700">
+            shop rhode
+        </a>
+    </div>
+    
+    </section>
 
 <!-- Featured Product Section -->
 <section class="w-full px-4 py-8 md:px-8">
@@ -113,8 +134,8 @@
     <!-- Left Side: Image -->
     <div class="h-full min-h-[400px] w-full md:min-h-[550px]">
       <img 
-        src="images/lage.jpg" 
-        alt="skin-nourishing spritz" 
+        src="images/botttle.jpg" 
+        alt="every bit of butter" 
         class="h-full w-full object-cover object-center"
       >
     </div>
@@ -123,19 +144,21 @@
 <div class="flex flex-col justify-end p-8 md:p-12">
   
   <!-- Title -->
-  <h2 class="mb-4 font-sans text-4xl font-semibold lowercase tracking-tight text-[#6a6864]">
-    skin-nourishing spritz
+  <h2 class="mb-4 font-sans text-4xl font-semibold lowercase tracking-tight text-stone-500">
+    every bit of butter
+
   </h2>
 
   <!-- Description Paragraph -->
-  <p class="mb-8 font-sans text-sm font-semibold leading-relaxed text-[#6a6864] md:text-base">
+  <p class="max-w-md text-lg leading-relaxed text-stone-600">
     Glazing Mist’s clinically proven formula is packed with
      efficacious skincare to hydrate and nourish, plus has
     purifying benefits to help skin feel calm and clarified over time.
   </p>
 
   <!-- Full Width Pill Button -->
-  <a href="product.html?id=6" class="block w-full rounded-full border border-stone-500/40 py-2.5 text-center text-base font-sans   Suppercase tracking-wider text-stone-700 transition hover:bg-stone-700 hover:text-white flex max-w-md flex-col justify-end p-5 md:p-4">
+  <a href="product.html?id=6"  class="mt-2  w-fit rounded-full border border-stone-600 px-10 py-2 text-lg uppercase text-stone-600 transition hover:bg-stone-100 hover:text-white">
+
     GRAB A BOTTLE
   </a>
 
@@ -159,12 +182,13 @@
 </h2>
 
   <!-- Description Paragraph -->
-  <p class="mb-9 font-normal font-semibold  leading-relaxed text-stone-500 md:text-base">
+  <p class="max-w-md text-lg leading-relaxed text-stone-600">
     Glide on Peptide Lip Shape for a soft-focus, contoured effect and top it with Peptide Lip Tint or Peptide Lip Boost to lock in hydration.
   </p>
 
   <!-- Full Width Pill Button -->
-  <a href="product.html?id=1" class="block w-full rounded-full border border-stone-500/40 py-3.5 text-center text-xs font-semibold uppercase tracking-wider text-stone-700 transition hover:bg-stone-700 hover:text-white">
+  <a href="product.html?id=1"         class="mt-2  w-fit rounded-full border border-stone-600 px-10 py-2 text-lg uppercase text-stone-600 transition hover:bg-stone-300 hover:text-white">
+
     Curate your combo
   </a>
 

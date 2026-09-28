@@ -166,6 +166,114 @@ app.get("/api/products/:id/recommendations", async (req, res) => {
   }
 });
 
+
+
+
+
+// ===== ADMIN GUARD: only users with role = 'admin' can pass =====
+// Always use it AFTER requireAuth (requireAuth puts the user in req.user)
+function requireAdmin(req, res, next) {
+  if (req.user.role !== "admin") {
+    return res.status(403).json({ error: "Admins only" });
+  }
+  next();
+}
+
+// ===== ADMIN: add a product =====
+app.post("/api/products", requireAuth, requireAdmin, async (req, res) => {
+  const { name, description, price, image, category, stock, label, tagline, badge } = req.body;
+
+  if (!name || !category || price === undefined || Number(price) < 0) {
+    return res.status(400).json({ error: "Name, category and a valid price are required" });
+  }
+
+  try {
+    const [result] = await db.query(
+      `INSERT INTO products (name, description, price, image, category, stock, label, tagline, badge)
+       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+      [name, description || null, price, image || null, category, stock || 0, label || null, tagline || null, badge || null]
+    );
+    res.status(201).json({ message: "Product created", id: result.insertId });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Server error" });
+  }
+});
+
+// ===== ADMIN: edit a product =====
+app.put("/api/products/:id", requireAuth, requireAdmin, async (req, res) => {
+  const { name, description, price, image, category, stock, label, tagline, badge } = req.body;
+
+  if (!name || !category || price === undefined || Number(price) < 0) {
+    return res.status(400).json({ error: "Name, category and a valid price are required" });
+  }
+
+  try {
+    const [result] = await db.query(
+      `UPDATE products
+       SET name = ?, description = ?, price = ?, image = ?, category = ?, stock = ?, label = ?, tagline = ?, badge = ?
+       WHERE id = ?`,
+      [name, description || null, price, image || null, category, stock || 0, label || null, tagline || null, badge || null, req.params.id]
+    );
+    if (result.affectedRows === 0) return res.status(404).json({ error: "Product not found" });
+    res.json({ message: "Product updated" });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Server error" });
+  }
+});
+
+// ===== ADMIN: delete a product =====
+app.delete("/api/products/:id", requireAuth, requireAdmin, async (req, res) => {
+  try {
+    const [result] = await db.query("DELETE FROM products WHERE id = ?", [req.params.id]);
+    if (result.affectedRows === 0) return res.status(404).json({ error: "Product not found" });
+    res.json({ message: "Product deleted" });
+  } catch (err) {
+    // A product that appears in an order can't be deleted (FOREIGN KEY in order_items)
+    if (err.code === "ER_ROW_IS_REFERENCED_2") {
+      return res.status(409).json({ error: "This product is in past orders. Set its stock to 0 instead of deleting it." });
+    }
+    console.error(err);
+    res.status(500).json({ error: "Server error" });
+  }
+});
+
+// ===== ADMIN: see all orders (with the customer's email) =====
+app.get("/api/admin/orders", requireAuth, requireAdmin, async (req, res) => {
+  try {
+    const [rows] = await db.query(
+      `SELECT o.id, o.full_name, o.city, o.total, o.status, o.created_at, u.email
+       FROM orders o
+       JOIN users u ON u.id = o.user_id
+       ORDER BY o.created_at DESC`
+    );
+    res.json(rows);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Server error" });
+  }
+});
+
+// ===== ADMIN: change an order's status =====
+app.put("/api/admin/orders/:id/status", requireAuth, requireAdmin, async (req, res) => {
+  const allowed = ["pending", "shipped", "delivered", "cancelled"];
+  const { status } = req.body;
+
+  if (!allowed.includes(status)) {
+    return res.status(400).json({ error: "Invalid status" });
+  }
+
+  try {
+    const [result] = await db.query("UPDATE orders SET status = ? WHERE id = ?", [status, req.params.id]);
+    if (result.affectedRows === 0) return res.status(404).json({ error: "Order not found" });
+    res.json({ message: "Status updated" });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Server error" });
+  }
+});
+
 // ===== 9. Start the server =====
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
