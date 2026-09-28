@@ -3,60 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-
-    <title>rhode</title>
-            <link rel="stylesheet" href="/src/style.css">
-
-
+    <title> Shop-Rhode</title>
+    <link rel="stylesheet" href="/src/style.css">
 </head>
 
 <body>
 
-    <header>
-        <div  class="mx-8 mt-4 rounded-2xl bg-[#f3f2f0] py-4 text-center">
-         <p class="text-sm font-bold tracking-wide text-[#66635f]">
-                        FREE SHIPPING ON ORDERS OVER $45
-
-         </p>
+        <div class="mx-8 mt-4 rounded-1xl bg-[#f3f2f0] py-4 text-center">
+            <p class="text-sm font-bold tracking-wide text-[#66635f]">
+                FREE SHIPPING ON ORDERS OVER $45
+            </p>
         </div>
+    <div class="mx-8 mt-4 overflow-hidden rounded-2xl bg-[#f3f2f0]">
+    <header>
 
-       <nav class="font-sans flex items-center justify-between px-8 py-6 text-stone-600">
+        <nav class="font-sans flex items-center justify-between px-8 py-6 text-stone-600">
 
-    <!-- Left Navigation -->
-    <div class="flex gap-6 text-base font-bold tracking-wide">
-        <a href="shop.html" class="hover:opacity-70">SHOP</a>
-        <a href="about.html" class="hover:opacity-70">ABOUT</a>
+            <!-- Left Navigation -->
+            <div class="flex gap-6 text-base font-bold tracking-wide">
+                <a href="shop.html" class="hover:opacity-70">SHOP</a>
+                <a href="about.html" class="hover:opacity-70">ABOUT</a>
+            </div>
 
-    </div>
+            <!-- Logo -->
+            <div>
+                <a href="index.html" class="text-6xl font-bold lowercase text-stone-600">rhode</a>
+            </div>
 
-    <!-- Logo -->
-    <div>
-        <a href="#" class="text-6xl font-bold lowercase text-stone-600">rhode</a>
-    </div>
+            <!-- Right Navigation -->
+            <div class="flex gap-6 text-base font-bold tracking-wide">
+                <a href="#" id="search-open" class="hover:opacity-70">SEARCH</a>
+                <a href="account.html" class="hover:opacity-70">ACCOUNT</a>
+                <a href="#" id="cart-open" class="hover:opacity-70">CART (0)</a>
+            </div>
 
-    <!-- Right Navigation -->
-    <div class="flex gap-6 text-base font-bold tracking-wide">
-        <a href="#" id="search-open"  class="hover:opacity-70">SEARCH</a>
-        <a href="account.html" class="hover:opacity-70">ACCOUNT</a>
-        <a href="#"  id="cart-open" class="hover:opacity-70">CART (0)</a>
-    </div>
-
-</nav>
+        </nav>
 
 
-<!-- Search Overlay -->
+
+         <!-- Search Overlay -->
 <div id="search-overlay" class="fixed inset-y-0 right-0 z-50 hidden w-full max-w-xl overflow-y-auto bg-[#f3f2f0] sm:w-1/2">
     <div class="px-8 py-10">
 
-      
+       <!-- Header row -->
 <div class="relative mb-8 flex items-center justify-center">
     <h2 class="text-3xl font-bold text-center lowercase text-stone-500">search</h2>
     <button id="search-close" class="absolute right-0 text-2xl text-stone-600 hover:opacity-70">
         &times;
     </button>
 </div>
-        
+
+        <!-- Input -->
         <input
             id="search-input"
             type="text"
@@ -66,7 +63,7 @@
 
         <!-- Suggestions -->
         <h3 class="mb-4 text-2xl font-bold text-stone-500">suggestions:</h3>
-        <ul class="space-y-3 text-lg font-normal text-stone-600">
+        <ul class="space-y-3 text-lg text-stone-600">
             <li><a href="#" class="hover:underline">pocket pearl</a></li>
             <li><a href="#" class="hover:underline">peptide lip tint</a></li>
             <li><a href="#" class="hover:underline">flutter charm</a></li>
@@ -88,116 +85,65 @@
 
 
 
+
+
+
+
     </header>
+    </div>
 
-
-    <!-- Main Content -->
     <main>
-
-
-        <!-- Hero Section -->
- <section class="relative mx-8 mt-5 h-[800px] overflow-hidden rounded-2xl">
-        <img 
-        src="images/haileyy.png"
-        alt="Rhode beauty campaign"
+        <section class="relative mx-8 mt-5 h-[600px] overflow-hidden rounded-2xl">
+    <video
+        src="videos/hero.mp4"
+        autoplay
+        muted
+        loop
+        playsinline
+        poster="images/rhhode.jpg"
         class="absolute inset-0 h-full w-full object-cover"
-        >
+    ></video>
 
-      <div class="absolute bottom-10 right-10 text-right text-white">
-        <h1 class="mb-5 font-sans  text-4xl font-normal tracking-tight">
-            Sun on the cheeks.
-        </h1>
-
-        <a href="#" class="rounded-full border-2 border-white px-9 py-1 text-base font-semibold transition hover:bg-white hover:text-gray-600">
-            POCKET BLUSH
-        </a>
+    <div class="absolute bottom-12 left-10 max-w-xs text-3xl font-semibold leading-tight text-white drop-shadow-md sm:text-4xl">
+        One of EVERYTHING really good.
     </div>
-
 </section>
+        
 
-<section id="featured-products" class="mx-8 mt-10 grid grid-cols-1 gap-5 md:grid-cols-3"></section>
 
-<!-- Featured Product Section -->
-<section class="w-full px-4 py-8 md:px-8">
-  <div class="grid grid-cols-1 overflow-hidden rounded-[2.5rem] bg-[#f4f4f2] md:grid-cols-2">
-    
-    <!-- Left Side: Image -->
-    <div class="h-full min-h-[400px] w-full md:min-h-[550px]">
-      <img 
-        src="images/lage.jpg" 
-        alt="skin-nourishing spritz" 
-        class="h-full w-full object-cover object-center"
-      >
+
+    <main id="checkout-page" class="mx-8 mt-10">
+    <h1 class="mb-10 text-5xl font-extrabold lowercase text-stone-700">checkout</h1>
+
+    <div class="grid grid-cols-1 gap-10 md:grid-cols-2">
+        <!-- Left: delivery form -->
+        <form id="checkout-form" class="flex flex-col gap-4">
+            <h2 class="text-xl font-bold text-stone-700">Delivery</h2>
+            <input id="full-name" type="text" placeholder="Full name" required class="w-full rounded-xl bg-[#f3f2f0] px-5 py-4 focus:outline-none">
+            <input id="address" type="text" placeholder="Address" required class="w-full rounded-xl bg-[#f3f2f0] px-5 py-4 focus:outline-none">
+            <input id="city" type="text" placeholder="City" required class="w-full rounded-xl bg-[#f3f2f0] px-5 py-4 focus:outline-none">
+            <input id="phone" type="tel" placeholder="Phone" required class="w-full rounded-xl bg-[#f3f2f0] px-5 py-4 focus:outline-none">
+
+            <p id="checkout-error" class="hidden text-sm text-red-600"></p>
+
+            <button type="submit" class="mt-2 rounded-full bg-stone-700 py-3.5 text-sm font-bold tracking-widest text-white hover:bg-stone-900 disabled:opacity-50">
+                PLACE ORDER
+            </button>
+            <p class="text-center text-xs text-stone-400">Demo project: no real payment is made.</p>
+        </form>
+
+        <!-- Right: order summary -->
+        <div class="rounded-2xl bg-[#f3f2f0] p-6">
+            <h2 class="mb-6 text-xl font-bold text-stone-700">Your order</h2>
+            <div id="checkout-summary" class="space-y-4"></div>
+        </div>
     </div>
-
-    <!-- Right Side: Content Container -->
-<div class="flex flex-col justify-end p-8 md:p-12">
-  
-  <!-- Title -->
-  <h2 class="mb-4 font-sans text-4xl font-semibold lowercase tracking-tight text-[#6a6864]">
-    skin-nourishing spritz
-  </h2>
-
-  <!-- Description Paragraph -->
-  <p class="mb-8 font-sans text-sm font-semibold leading-relaxed text-[#6a6864] md:text-base">
-    Glazing Mist’s clinically proven formula is packed with
-     efficacious skincare to hydrate and nourish, plus has
-    purifying benefits to help skin feel calm and clarified over time.
-  </p>
-
-  <!-- Full Width Pill Button -->
-  <a href="#" class="block w-full rounded-full border border-stone-500/40 py-2.5 text-center text-base font-sans   Suppercase tracking-wider text-stone-700 transition hover:bg-stone-700 hover:text-white flex max-w-md flex-col justify-end p-5 md:p-4">
-    GRAB A BOTTLE
-  </a>
-
-</div>
-
-  </div>
-</section>
-
-
-<!-- Featured Product Section -->
-<section class="w-full px-4 py-8 md:px-8">
-  <div class="grid grid-cols-1 overflow-hidden rounded-[2.5rem] bg-[#f4f4f2] md:grid-cols-2">
-    
-    <!-- Left Side: Content Container -->
-     <div class="flex flex-col justify-end p-8 md:p-12">
-  
-  <!-- Title -->
-  <h2 class="mb-4 font-sans text-5xl font-semibold lowercase tracking-tight text-[#6a6864]">
-  
-     peptides paired up
-</h2>
-
-  <!-- Description Paragraph -->
-  <p class="mb-9 font-normal font-semibold  leading-relaxed text-stone-500 md:text-base">
-    Glide on Peptide Lip Shape for a soft-focus, contoured effect and top it with Peptide Lip Tint or Peptide Lip Boost to lock in hydration.
-  </p>
-
-  <!-- Full Width Pill Button -->
-  <a href="#" class="block w-full rounded-full border border-stone-500/40 py-3.5 text-center text-xs font-semibold uppercase tracking-wider text-stone-700 transition hover:bg-stone-700 hover:text-white">
-    Curate your combo
-  </a>
-
-</div>
+</main>
 
 
 
 
-    
-
-    <!-- Right Side:Image -->
-     <div class="h-full min-h-[400px] w-full md:min-h-[550px]">
-      <img 
-        src="images/anna.jpg" 
-        alt="lip peptide" 
-        class="h-full w-full object-cover object-center"
-      >
-    </div>
-
-</section>
-
-
+</body>
 
 <footer class="mx-8 mb-8 mt-20 rounded-2xl bg-[#f4f4f2] text-stone-600">
 
@@ -283,6 +229,9 @@
 </footer>
 
     <script type="module" src="/src/search.js"></script>
-    <script type="module" src="/src/featured.js"></script>
+    <script type="module" src="/src/checkout.js"></script>
 </body>
 </html>
+
+
+

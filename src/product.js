@@ -1,4 +1,5 @@
 import { API_URL, productCard, setupCardClicks } from "./product-card.js";
+import { addToCart } from "./cart.js";
 
 // The boxes in product.html
 const detail = document.getElementById("product-detail");
@@ -70,9 +71,7 @@ function setupButtons(p) {
 
     const addBtn = document.getElementById("add-to-cart");
     addBtn.addEventListener("click", () => {
-        // The real cart comes next session; for now we just confirm
-        addBtn.textContent = `ADDED ${quantity} ✓`;
-        setTimeout(() => (addBtn.textContent = "ADD TO CART"), 1500);
+        addToCart(p, quantity); // puts the product in the cart with the chosen quantity
     });
 }
 

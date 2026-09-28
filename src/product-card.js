@@ -1,4 +1,5 @@
 // Shared code for product cards (used by featured.js AND shop.js)
+import { addToCart } from "./cart.js";
 
 // Address of YOUR backend
 export const API_URL = "http://localhost:3000/api";
@@ -62,9 +63,11 @@ export function setupCardClicks(container) {
     container?.addEventListener("click", (e) => {
         const button = e.target.closest(".add-btn");
         if (button) {
-            // The real cart comes later; for now we just show a confirmation
-            button.textContent = "ADDED ✓";
-            setTimeout(() => (button.textContent = "ADD TO CART"), 1500);
+            // Get the full product from the backend, then put it in the cart
+            const id = button.closest("[data-product-id]").dataset.productId;
+            fetch(`${API_URL}/products/${id}`)
+                .then((response) => response.json())
+                .then((product) => addToCart(product, 1));
             return;
         }
 

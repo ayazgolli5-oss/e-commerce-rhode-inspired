@@ -29,9 +29,9 @@ function render() {
         : `<p class="col-span-full text-center text-stone-500">No products in this category.</p>`;
 }
 
-// Creates one filter button per category: ALL, LIPS, CHEEKS, SKIN...
+// Creates one filter button per category, with SHOP ALL at the end (like rhode)
 function renderFilters() {
-     const categories = [...new Set(allProducts.map((p) => p.category)), "all"];
+    const categories = [...new Set(allProducts.map((p) => p.category)), "all"];
 
     filters.innerHTML = categories
         .map((c) => {

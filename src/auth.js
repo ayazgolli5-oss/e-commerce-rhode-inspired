@@ -38,7 +38,12 @@ if (loginForm) {
             localStorage.setItem("token", data.token);
             localStorage.setItem("user", JSON.stringify(data.user));
 
-            window.location.href = "index.html";
+
+
+
+            const next = new URLSearchParams(window.location.search).get("next");
+           window.location.href = next || "index.html";
+
         } catch (error) {
             showError("Cannot reach the server. Is it running?");
         }

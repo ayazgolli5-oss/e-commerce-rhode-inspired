@@ -150,3 +150,92 @@ app.get("/api/products/:id", async (req, res) => {
 // ===== 9. Start the server =====
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
+
+
+
+
+// ===== ORDERS: place an order (logged-in users only) =====
+app.post("/api/orders", requireAuth, async (req, res) => {
+  const { fullName, address, city, phone, items } = req.body;
+
+  // Check the data
+  if (!fullName || !address || !city || !phone) {
+    return res.status(400).json({ error: "Please fill in all the delivery fields" });
+  }
+  if (!Array.isArray(items) || items.length === 0) {
+    return res.status(400).json({ error: "Your cart is empty" });
+  }
+
+  // A transaction: either EVERYTHING is saved, or NOTHING is
+  const conn = await db.getConnection();
+  try {
+    await conn.beginTransaction();
+
+    let subtotal = 0;
+    const lines = [];
+
+    for (const item of items) {
+      // Take the REAL price and stock from MySQL (never trust prices sent by the browser)
+      // FOR UPDATE locks the row so two customers can't buy the last item at the same time
+      const [rows] = await conn.query(
+        "SELECT id, name, price, stock FROM products WHERE id = ? FOR UPDATE",
+        [item.productId]
+      );
+      const product = rows[0];
+      const qty = Number(item.qty);
+
+      if (!product) throw { status: 404, message: "A product in your cart no longer exists" };
+      if (!Number.isInteger(qty) || qty < 1) throw { status: 400, message: "Invalid quantity" };
+      if (qty > product.stock) {
+        throw { status: 409, message: `Only ${product.stock} left for ${product.name}` };
+      }
+
+      subtotal += Number(product.price) * qty;
+      lines.push({ productId: product.id, qty, price: product.price });
+    }
+
+    const shipping = subtotal >= 45 ? 0 : 5;
+    const total = subtotal + shipping;
+
+    // 1. Save the order
+    const [orderResult] = await conn.query(
+      `INSERT INTO orders (user_id, full_name, address, city, phone, subtotal, shipping, total)
+       VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
+      [req.user.id, fullName.trim(), address.trim(), city.trim(), phone.trim(), subtotal, shipping, total]
+    );
+    const orderId = orderResult.insertId;
+
+    // 2. Save each product of the order + reduce the stock
+    for (const line of lines) {
+      await conn.query(
+        "INSERT INTO order_items (order_id, product_id, quantity, unit_price) VALUES (?, ?, ?, ?)",
+        [orderId, line.productId, line.qty, line.price]
+      );
+      await conn.query("UPDATE products SET stock = stock - ? WHERE id = ?", [line.qty, line.productId]);
+    }
+
+    await conn.commit(); // everything worked -> save for real
+    res.status(201).json({ message: "Order placed", orderId, total });
+  } catch (err) {
+    await conn.rollback(); // something failed -> cancel everything
+    if (err.status) return res.status(err.status).json({ error: err.message });
+    console.error(err);
+    res.status(500).json({ error: "Server error" });
+  } finally {
+    conn.release(); // give the connection back to the pool
+  }
+});
+
+// ===== ORDERS: my orders (for the account page later) =====
+app.get("/api/orders/mine", requireAuth, async (req, res) => {
+  try {
+    const [rows] = await db.query(
+      "SELECT id, total, status, created_at FROM orders WHERE user_id = ? ORDER BY created_at DESC",
+      [req.user.id]
+    );
+    res.json(rows);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Server error" });
+  }
+});

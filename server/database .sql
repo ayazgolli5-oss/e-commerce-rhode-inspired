@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : sam. 26 sep. 2026 à 18:53
+-- Généré le : dim. 27 sep. 2026 à 00:24
 -- Version du serveur : 10.4.32-MariaDB
 -- Version de PHP : 8.2.12
 
@@ -57,28 +57,7 @@ INSERT INTO `products` (`id`, `name`, `description`, `price`, `image`, `category
 (8, 'spotwear', 'Invisible patches for breakouts.', 17.00, 'images/spotwear.webp', 'skin', 60, '2026-09-25 20:53:51', 0, 'spotwear', 5.0, 0, 'Invisible breakout patches', NULL),
 (9, 'flutter charm', 'A cute charm to decorate your phone case.', 15.00, 'images/fluttercharm.webp', 'accessories', 20, '2026-09-25 20:53:51', 0, 'charm', 5.0, 0, 'A little phone accessory', NULL),
 (11, 'pocket blush', 'A creamy blush stick for a natural flush.', 25.00, 'images/blush.webp', 'cheeks', 40, '2026-09-25 21:20:16', 1, 'blush', 4.9, 7398, 'Buildable cream blush', 'bestseller'),
-(14, 'rhode mirror', 'The compact mirror', 24.00, 'images/mirror.webp', 'shop.all', 40, '2026-09-26 16:50:05', 0, 'MIRROR', 4.8, 278, 'the compact mirror', NULL);
-
--- --------------------------------------------------------
-
---
--- Structure de la table `users`
---
-
-CREATE TABLE `users` (
-  `id` int(11) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `password_hash` varchar(255) NOT NULL,
-  `role` enum('customer','admin') NOT NULL DEFAULT 'customer',
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Déchargement des données de la table `users`
---
-
-INSERT INTO `users` (`id`, `email`, `password_hash`, `role`, `created_at`) VALUES
-(1, 'ayazgolly@gmail.com', '$2b$10$KGieQK4uzI.RIUkmyDH.DeFkAwxZLJDbC9qrSfk6ZZvfQqdvNmn6y', 'customer', '2026-09-25 18:55:18');
+(14, 'rhode mirror', 'The compact mirror', 24.00, 'images/mirror.webp', 'accessories', 40, '2026-09-26 16:50:05', 0, 'MIRROR', 4.8, 278, 'the compact mirror', NULL);
 
 --
 -- Index pour les tables déchargées
@@ -91,13 +70,6 @@ ALTER TABLE `products`
   ADD PRIMARY KEY (`id`);
 
 --
--- Index pour la table `users`
---
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `email` (`email`);
-
---
 -- AUTO_INCREMENT pour les tables déchargées
 --
 
@@ -106,12 +78,6 @@ ALTER TABLE `users`
 --
 ALTER TABLE `products`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
-
---
--- AUTO_INCREMENT pour la table `users`
---
-ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
