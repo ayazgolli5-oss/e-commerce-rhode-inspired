@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
-    <title>rhode</title>
+    <title>rhode skincare by hailey rhode bieber</title>
             <link rel="stylesheet" href="/src/style.css">
 
 
@@ -21,28 +21,34 @@
          </p>
         </div>
 
-       <nav class="font-sans flex items-center justify-between px-8 py-6 text-stone-600">
+       <section class="mx-8 mt-4 flex h-[calc(100vh-6rem)] flex-col overflow-hidden rounded-2xl bg-[#f3f2f0]">
 
-    <!-- Left Navigation -->
-    <div class="flex gap-6 text-base font-bold tracking-wide">
-        <a href="shop.html" class="hover:opacity-70">SHOP</a>
-        <a href="about.html" class="hover:opacity-70">ABOUT</a>
+    <!-- Navbar: its own beige band -->
+    <nav class="flex items-center justify-between px-10 py-6 text-stone-600">
+        <div class="flex gap-12 text-lg font-medium tracking-wide">
+            <a href="shop.html" class="hover:opacity-70">SHOP</a>
+            <a href="about.html" class="hover:opacity-70">ABOUT</a>
+        </div>
+        <a href="index.html" class="text-5xl font-bold lowercase">rhode</a>
+        <div class="flex gap-12 text-lg font-medium tracking-wide">
+            <a href="#" id="search-open" class="hover:opacity-70">SEARCH</a>
+            <a href="account.html" class="hover:opacity-70">ACCOUNT</a>
+            <a href="#" id="cart-open" class="hover:opacity-70">CART (0)</a>
+        </div>
+    </nav>
 
+    <!-- Photo: takes all the remaining space -->
+    <div class="relative flex-1">
+        <img src="images/logo1.png" alt="rhode campaign"
+             class="absolute inset-0 h-full w-full object-contain object-center">
+
+        <div class="absolute bottom-10 left-10 text-stone-600">
+            <p class="mb-3 text-base font-semibold uppercase tracking-wide">award-winning glow</p>
+            <h1 class="mb-5 max-w-sm text-3xl font-light leading-tight">Allure's Best of Beauty Winner.</h1>
+            <a href="shop.html" class="inline-block rounded-full border-2 border-stone-600 px-10 py-1.5 text-lg hover:bg-stone-600 hover:text-white">HIGHLIGHT MILK</a>
+        </div>
     </div>
-
-    <!-- Logo -->
-    <div>
-        <a href="#" class="text-6xl font-bold lowercase text-stone-600">rhode</a>
-    </div>
-
-    <!-- Right Navigation -->
-    <div class="flex gap-6 text-base font-bold tracking-wide">
-        <a href="#" id="search-open"  class="hover:opacity-70">SEARCH</a>
-        <a href="account.html" class="hover:opacity-70">ACCOUNT</a>
-        <a href="#"  id="cart-open" class="hover:opacity-70">CART (0)</a>
-    </div>
-
-</nav>
+</section>
 
 
 <!-- Search Overlay -->
@@ -96,24 +102,7 @@
 
 
         <!-- Hero Section -->
- <section class="relative mx-8 mt-5 h-[800px] overflow-hidden rounded-2xl">
-        <img 
-        src="images/haileyy.png"
-        alt="Rhode beauty campaign"
-        class="absolute inset-0 h-full w-full object-cover"
-        >
-
-      <div class="absolute bottom-10 right-10 text-right text-white">
-        <h1 class="mb-5 font-sans  text-4xl font-normal tracking-tight">
-            Sun on the cheeks.
-        </h1>
-
-        <a href="#" class="rounded-full border-2 border-white px-9 py-1 text-base font-semibold transition hover:bg-white hover:text-gray-600">
-            POCKET BLUSH
-        </a>
-    </div>
-
-</section>
+  
 
 <section id="featured-products" class="mx-8 mt-10 grid grid-cols-1 gap-5 md:grid-cols-3"></section>
 
@@ -146,7 +135,7 @@
   </p>
 
   <!-- Full Width Pill Button -->
-  <a href="#" class="block w-full rounded-full border border-stone-500/40 py-2.5 text-center text-base font-sans   Suppercase tracking-wider text-stone-700 transition hover:bg-stone-700 hover:text-white flex max-w-md flex-col justify-end p-5 md:p-4">
+  <a href="product.html?id=6" class="block w-full rounded-full border border-stone-500/40 py-2.5 text-center text-base font-sans   Suppercase tracking-wider text-stone-700 transition hover:bg-stone-700 hover:text-white flex max-w-md flex-col justify-end p-5 md:p-4">
     GRAB A BOTTLE
   </a>
 
@@ -175,7 +164,7 @@
   </p>
 
   <!-- Full Width Pill Button -->
-  <a href="#" class="block w-full rounded-full border border-stone-500/40 py-3.5 text-center text-xs font-semibold uppercase tracking-wider text-stone-700 transition hover:bg-stone-700 hover:text-white">
+  <a href="product.html?id=1" class="block w-full rounded-full border border-stone-500/40 py-3.5 text-center text-xs font-semibold uppercase tracking-wider text-stone-700 transition hover:bg-stone-700 hover:text-white">
     Curate your combo
   </a>
 
