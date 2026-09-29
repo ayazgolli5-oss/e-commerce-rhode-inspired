@@ -14,23 +14,23 @@
 <body>
 
     <header>
-        <div  class="mx-8 mt-4 rounded-2xl bg-[#f3f2f0] py-4 text-center">
+        <div  class="mx-8 mt-3 rounded-2xl bg-[#f3f2f0] py-3 text-center">
          <p class="text-sm font-bold tracking-wide text-[#66635f]">
                         FREE SHIPPING ON ORDERS OVER $45
 
          </p>
         </div>
 
-       <section class="mx-8 mt-4 flex flex-col overflow-hidden rounded-2xl bg-[#f3f2f0]">
+       <section class="mx-8 mt-4  h-[calc(100vh-5rem)] flex flex-col overflow-hidden rounded-2xl bg-[#f3f2f0]">
 
     <!-- Navbar: its own beige band -->
-    <nav class="flex items-center justify-between px-10 py-6 text-stone-600">
+    <nav class="grid grid-cols-3 items-center px-10 py-4 text-stone-600">
         <div class="flex gap-12 text-lg font-medium tracking-wide">
             <a href="shop.html" class="hover:opacity-70">SHOP</a>
             <a href="about.html" class="hover:opacity-70">ABOUT</a>
         </div>
-        <a href="index.html" class="text-5xl font-bold lowercase">rhode</a>
-        <div class="flex gap-12 text-lg font-medium tracking-wide">
+        <a href="index.html" class=" justify-self-center text-5xl font-bold lowercase">rhode</a>
+        <div class="flex justify-end gap-12 text-lg font-medium tracking-wide">
             <a href="#" id="search-open" class="hover:opacity-70">SEARCH</a>
             <a href="account.html" class="hover:opacity-70">ACCOUNT</a>
             <a href="#" id="cart-open" class="hover:opacity-70">CART (0)</a>
@@ -40,7 +40,7 @@
     <!-- Photo: takes all the remaining space -->
     <div class="relative flex-1">
         <img src="images/hai.webp" alt="rhode campaign"
-             class="block h-auto w-full">
+             class="absolute inset-0 h-full w-full object-cover object-[center_60%]">
 
         <div class="absolute bottom-10 left-10 z-10 text-stone-600">
             <p class="mb-3 text-base font-semibold uppercase tracking-wide">award-winning glow</p>

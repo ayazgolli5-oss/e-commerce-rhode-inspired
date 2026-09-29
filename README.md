@@ -2,6 +2,10 @@
 
 Application e-commerce complète inspirée du site de la marque de soins **rhode**, réalisée comme projet personnel pour apprendre le développement web full-stack.
 
+
+![Page d'accueil](screenshot/homepage.png)
+
+
 > ⚠️ Projet à but **éducatif** uniquement. Il n'est pas affilié à la marque rhode. Les images et noms de produits appartiennent à leurs propriétaires.
 
 ---
